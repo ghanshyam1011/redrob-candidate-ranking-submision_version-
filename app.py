@@ -3,13 +3,13 @@ import pandas as pd
 import tempfile
 import os
 
-from ranker import run_pipeline, validate_and_write, CONFIG
+from rank import run_pipeline, validate_and_write, CONFIG
 
 def run_ranking(jsonl_file):
     if jsonl_file is None:
         return None, None
 
-    out_path = os.path.join(tempfile.gettempdir(), "team_submission.csv")
+    out_path = os.path.join(tempfile.gettempdir(), "team_ai_quartet.csv")
 
     try:
         rows = run_pipeline(jsonl_file.name, CONFIG)
