@@ -7,11 +7,11 @@ challenge: "Redrob Intelligent Candidate Discovery & Ranking Challenge"
 event: "India Runs Hackathon (Hack2Skill)"
 
 submission:
-  output_file: "output/team_submission.csv"
+  output_file: "output/team_ai_quartet.csv"
   notebook: "Redrob_Ranker_v2.ipynb"
   repo: "https://github.com/ghanshyam1011/redrob-candidate-ranking-submision_version-"
   sandbox_demo: "https://huggingface.co/spaces/LegalAIShravani/redrob-ranker"
-  Google_Colab_runtime : "https://colab.research.google.com/drive/18Zt_7wGs_6cdG1wGZeBBm5nJDjr8uucP?usp=sharing"
+  Google_Colab_runtime : "https://colab.research.google.com/drive/1ame6jcu3lZoeRieKR6aDVGl0X2CyXNAE?usp=sharing"
 
 approach:
   method: "Additive 7-layer rubric (Doc-4 JD-centric) with alias-aware JD skill matching and rank-aware fact-grounded reasoning"

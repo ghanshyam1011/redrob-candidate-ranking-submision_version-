@@ -670,18 +670,28 @@ def validate_and_write(rows, path, config):
 
 
 def main():
+    import os
     ap = argparse.ArgumentParser(description="Redrob candidate ranker (v2 additive)")
-    ap.add_argument("--candidates", required=True)
+    ap.add_argument("--candidates", default=None)
     ap.add_argument("--jd", required=True)
-    ap.add_argument("--out", default="submission.csv")
+    ap.add_argument("--out", default="team_ai_quartet.csv")
     args = ap.parse_args()
+
+    # auto-detect .gz if --candidates not specified
+    if args.candidates is None:
+        if os.path.exists("candidates.jsonl.gz"):
+            args.candidates = "candidates.jsonl.gz"
+        elif os.path.exists("candidates.jsonl"):
+            args.candidates = "candidates.jsonl"
+        else:
+            ap.error("candidates file not found. Pass --candidates or place candidates.jsonl/.gz in current dir.")
+    print(f"Using candidates: {args.candidates}")
 
     print("Ranking...")
     top = run_pipeline(args.candidates, CONFIG)
     print("Writing...")
     validate_and_write(top, args.out, CONFIG)
     print("Done.")
-
 
 if __name__ == "__main__":
     main()
