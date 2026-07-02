@@ -133,18 +133,21 @@ All date-relative logic uses a fixed `REFERENCE_DATE = 2026-06-30` instead of `d
 ├── README.md                        # this file
 ├── requirements.txt                 # dependencies
 ├── submission_metadata.yaml         # challenge submission metadata
-├── Redrob_Ranker_v2.ipynb           # main notebook (Colab sandbox link)
-└── output/
-    └── team_submission.csv          # the submitted top-100 ranking
+├── Redrob_Ranker_v2.ipynb           # notebook (Colab sandbox link)
+├── rank.py                          # main file
+└── submission.csv                   # the submitted top-100 ranking
 ```
 
 ---
 
 ## How to run
 
-### Colab notebook (sandbox demo + full reproduction)
+> NNOTE: make sure you have candidate.jsonl or the file on which you have to inference on
+
+### Option 1: Colab notebook (sandbox demo + full reproduction)
 
 1. Open `Redrob_Ranker_v2.ipynb` in Google Colab.
+2. Add `job_description.txt` file (In the same repo or upload yours file)
 2. Upload `candidates.jsonl` to the Colab session (or mount from Drive).
 3. **Runtime → Run all.**
 
@@ -156,6 +159,31 @@ pip install -r requirements.txt
 jupyter nbconvert --to notebook --execute Redrob_Ranker_v2.ipynb \
   --ExecutePreprocessor.timeout=300 \
   --output team_submission_executed.ipynb
+```
+
+### Option 2: Github
+
+Step 1: Clone repo
+```bash
+git clone https://github.com/ghanshyam1011/redrob-candidate-ranking-submision_version-.git
+```
+
+Step 2: Create virtual environment (Optional)
+```bash
+python -m venv venv 
+
+venv\Scripts\activate
+```
+
+Step 3: Download requirements
+```bash
+pip install -r requirements.txt
+```
+
+Step 4: Run `rank.py` file
+
+```bash
+python rank.py --candidates ./candidates.jsonl --jd ./job_description.txt --out ./submission.csv 
 ```
 
 ---
