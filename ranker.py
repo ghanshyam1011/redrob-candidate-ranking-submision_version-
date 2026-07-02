@@ -610,7 +610,8 @@ def run_pipeline(path, config):
     heap, seq, n_total, n_disq, n_bad = [], 0, 0, 0, 0
     buf = config["heap_buffer"]
 
-    with open(path, "rb") as f:
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rb") as f:
         for raw in f:
             if not raw.strip(): continue
             try:
